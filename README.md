@@ -2,6 +2,12 @@
 
 This project contains an iOS mobile application assessment.
 
+## Libraries Used
+
+- **Atlantis**: [Atlantis](https://github.com/ProxymanApp/atlantis) for debugging requests purposes.
+- **Kingfisher**: [Kingfisher](https://github.com/onevcat/Kingfisher) for image caching.
+- **SwiftAsyncNetwork**: [SwiftAsyncNetwork](https://github.com/marcelfagadariu/SwiftAsyncNetworking) which was created by me to simplify asynchronous network operations.
+
 ### Requirmenets
 
 As part of the hiring process, we would like to see a small iOS app fully authored by you. Once submitted, your code will be reviewed by your potential colleagues, who will dissect it with the same care as if it were a PR to be merged into our codebase. Keep this in mind, as we will equally look at how you approach versioning, code style consistency, naming, testing strategy, code layering, architecture, lifecycle gotchas, handling of failures, application of good programming practices, etc.
@@ -41,9 +47,5 @@ Things we will be focusing on when reviewing:
 
 You’re free to use whichever library you’re used to in your own projects, without limitations. Just give us a heads-up if you reach for something more exotic that heavily impacts what the implementation looks like.
 
-## Libraries Used
 
-- **Atlantis**: [Atlantis](https://github.com/ProxymanApp/atlantis) for debugging requests purposes.
-- **Kingfisher**: [Kingfisher](https://github.com/onevcat/Kingfisher) for image caching.
-- **SwiftAsyncNetwork**: [SwiftAsyncNetwork](https://github.com/marcelfagadariu/SwiftAsyncNetworking) which was created by me to simplify asynchronous network operations.
 
