@@ -1,0 +1,33 @@
+{
+  "originHash" : "a484e37e31a216e9ec96c2a3ce819ced97e13fdee22c17574d5c5743399e6241",
+  "pins" : [
+    {
+      "identity" : "atlantis",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ProxymanApp/atlantis.git",
+      "state" : {
+        "revision" : "5145a7041ec71421d09653db87dcc80c81792004",
+        "version" : "1.24.0"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "5b92f029fab2cce44386d28588098b5be0824ef5",
+        "version" : "7.11.0"
+      }
+    },
+    {
+      "identity" : "swiftasyncnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marcelfagadariu/SwiftAsyncNetworking",
+      "state" : {
+        "branch" : "main",
+        "revision" : "9695b697c607de574ef1b608a97bc4f29aedb47a"
+      }
+    }
+  ],
+  "version" : 3
+}
