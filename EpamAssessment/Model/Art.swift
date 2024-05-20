@@ -14,3 +14,10 @@ struct Art: Decodable {
     let webImage, headerImage: ArtImage
     let productionPlaces: [String]
 }
+
+extension Art {
+
+    // MARK: - Computed properties
+
+    var placesDescription: String { productionPlaces.joined(separator: ", ").capitalized  }
+}

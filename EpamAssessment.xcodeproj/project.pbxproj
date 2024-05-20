@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1FB62DDD2BFB690E00BABD99 /* ArtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB62DDC2BFB690E00BABD99 /* ArtDetailViewModel.swift */; };
+		1FB62DDF2BFB788100BABD99 /* ArtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB62DDE2BFB788100BABD99 /* ArtDetailView.swift */; };
 		1FFFFB022BF4A702004AE9C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFFB012BF4A702004AE9C2 /* AppDelegate.swift */; };
 		1FFFFB042BF4A702004AE9C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFFB032BF4A702004AE9C2 /* SceneDelegate.swift */; };
 		1FFFFB062BF4A702004AE9C2 /* ArtListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFFB052BF4A702004AE9C2 /* ArtListViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		1FB62DDC2BFB690E00BABD99 /* ArtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailViewModel.swift; sourceTree = "<group>"; };
+		1FB62DDE2BFB788100BABD99 /* ArtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailView.swift; sourceTree = "<group>"; };
 		1FFFFAFE2BF4A702004AE9C2 /* EpamAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EpamAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFFFB012BF4A702004AE9C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFFFB032BF4A702004AE9C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				1FFFFB312BF4AF34004AE9C2 /* ArtDetailViewController.swift */,
+				1FB62DDE2BFB788100BABD99 /* ArtDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FFFFB062BF4A702004AE9C2 /* ArtListViewController.swift in Sources */,
+				1FB62DDF2BFB788100BABD99 /* ArtDetailView.swift in Sources */,
 				1FFFFB412BF4B8A7004AE9C2 /* ArtObject.swift in Sources */,
 				1FFFFB662BF50BAD004AE9C2 /* ArtCollectionViewCell.swift in Sources */,
 				1FFFFB4C2BF4BD5A004AE9C2 /* DateFormatterExtension.swift in Sources */,

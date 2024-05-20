@@ -6,13 +6,13 @@
 //
 
 import UIKit
-import Kingfisher
 
 class ArtDetailViewController: UIViewController {
 
     // MARK: - Properties
 
     private let viewModel: ArtDetailViewModel
+    private let artDetailView = ArtDetailView()
 
     // MARK: - Init
 
@@ -44,36 +44,16 @@ class ArtDetailViewController: UIViewController {
     }
 
     private func setupUI() {
-        let artIamgeView = UIImageView()
-        if viewModel.art.hasImage {
-            let url = URL(string: viewModel.art.webImage.url)
-            artIamgeView.kf.setImage(with: url)
-        } else {
-            artIamgeView.image = UIImage(named: "placeholder")
-        }
-        artIamgeView.contentMode = .scaleToFill
-        artIamgeView.layer.masksToBounds = true
-        artIamgeView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(artIamgeView)
-
-        let descriptionLabel = UILabel()
-        descriptionLabel.text = viewModel.art.longTitle
-        descriptionLabel.textAlignment = .center
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(descriptionLabel)
+        view.addSubview(artDetailView)
+        artDetailView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            artIamgeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            artIamgeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            artIamgeView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 0),
-            artIamgeView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 0),
-            artIamgeView.heightAnchor.constraint(equalToConstant: 250),
-
-            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: artIamgeView.bottomAnchor, constant: 20),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            artDetailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            artDetailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            artDetailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            artDetailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+
+        artDetailView.configure(with: viewModel)
     }
 }
