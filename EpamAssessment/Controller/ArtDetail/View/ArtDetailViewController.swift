@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArtDetailViewController: UIViewController {
+final class ArtDetailViewController: UIViewController {
 
     // MARK: - Properties
 

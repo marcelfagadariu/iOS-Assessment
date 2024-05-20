@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class ArtDetailView: UIView {
+final class ArtDetailView: UIView {
 
     // MARK: - Subviews
 

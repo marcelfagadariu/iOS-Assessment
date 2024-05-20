@@ -9,13 +9,14 @@
 
 class MockArtService: ArtService {
     
-    var countryCode: String?
+    var culture: String?
     var hasBeenCalled = false
     var shouldThrowError = false
 
     func retrieveArt(pageSize: Int, culture: Culture) async throws -> ArtObject {
-        if shouldThrowError { throw InterfaceError.internalError }
         self.hasBeenCalled = true
+        if shouldThrowError { throw InterfaceError.internalError }
+        self.culture = culture.rawValue
         return .init(artObjects: ArtObject.mock)
     }
 }

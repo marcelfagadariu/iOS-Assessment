@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArtHeaderCollectionReusableView: UICollectionReusableView {
+final class ArtHeaderCollectionReusableView: UICollectionReusableView {
 
     private let titleLabel = UILabel()
     private var segmentedControl = UISegmentedControl()

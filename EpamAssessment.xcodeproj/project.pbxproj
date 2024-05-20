@@ -14,7 +14,7 @@
 		1FFFFB062BF4A702004AE9C2 /* ArtListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFFB052BF4A702004AE9C2 /* ArtListViewController.swift */; };
 		1FFFFB0B2BF4A703004AE9C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFFFB0A2BF4A703004AE9C2 /* Assets.xcassets */; };
 		1FFFFB0E2BF4A703004AE9C2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1FFFFB0D2BF4A703004AE9C2 /* Base */; };
-		1FFFFB192BF4A704004AE9C2 /* EpamAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFFB182BF4A704004AE9C2 /* EpamAssessmentTests.swift */; };
+		1FFFFB192BF4A704004AE9C2 /* ArtListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFFB182BF4A704004AE9C2 /* ArtListViewModelTests.swift */; };
 		1FFFFB322BF4AF34004AE9C2 /* ArtDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFFB312BF4AF34004AE9C2 /* ArtDetailViewController.swift */; };
 		1FFFFB3C2BF4B341004AE9C2 /* SwiftAsyncNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 1FFFFB3B2BF4B341004AE9C2 /* SwiftAsyncNetworking */; };
 		1FFFFB3F2BF4B508004AE9C2 /* Atlantis in Frameworks */ = {isa = PBXBuildFile; productRef = 1FFFFB3E2BF4B508004AE9C2 /* Atlantis */; };
@@ -58,7 +58,7 @@
 		1FFFFB0D2BF4A703004AE9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FFFFB0F2BF4A703004AE9C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FFFFB142BF4A704004AE9C2 /* EpamAssessmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EpamAssessmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FFFFB182BF4A704004AE9C2 /* EpamAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpamAssessmentTests.swift; sourceTree = "<group>"; };
+		1FFFFB182BF4A704004AE9C2 /* ArtListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtListViewModelTests.swift; sourceTree = "<group>"; };
 		1FFFFB312BF4AF34004AE9C2 /* ArtDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailViewController.swift; sourceTree = "<group>"; };
 		1FFFFB402BF4B8A7004AE9C2 /* ArtObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObject.swift; sourceTree = "<group>"; };
 		1FFFFB422BF4B994004AE9C2 /* ArtImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtImage.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				1FFFFB5F2BF4D3EE004AE9C2 /* Mock */,
-				1FFFFB182BF4A704004AE9C2 /* EpamAssessmentTests.swift */,
+				1FFFFB182BF4A704004AE9C2 /* ArtListViewModelTests.swift */,
 			);
 			path = EpamAssessmentTests;
 			sourceTree = "<group>";
@@ -431,7 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FFFFB192BF4A704004AE9C2 /* EpamAssessmentTests.swift in Sources */,
+				1FFFFB192BF4A704004AE9C2 /* ArtListViewModelTests.swift in Sources */,
 				1FFFFB622BF4D408004AE9C2 /* MockArtService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArtListViewController: UIViewController {
+final class ArtListViewController: UIViewController {
 
     // MARK: - Properties
 
@@ -23,9 +23,12 @@ class ArtListViewController: UIViewController {
         setupCollectionView()
         viewModel.loadData(with: viewModel.culture, pageSize: viewModel.pageSize)
         setupNavigation()
+
+        /// callbacks
         reloadCollectionView()
         setupActivityIndicator()
-        setupViewModelCallbacks()
+        setupViewModelCallback()
+        handleErrorCallback()
     }
 
     // MARK: - Init
@@ -91,7 +94,7 @@ class ArtListViewController: UIViewController {
         activityIndicator.startAnimating()
     }
 
-    private func setupViewModelCallbacks() {
+    private func setupViewModelCallback() {
         viewModel.onLoadingStateChanged = { [weak self] isLoading in
             DispatchQueue.main.async {
                 if isLoading {
@@ -101,6 +104,20 @@ class ArtListViewController: UIViewController {
                 }
             }
         }
+    }
+
+    private func handleErrorCallback() {
+        viewModel.onErrorOccurred = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.presentErrorAlert(message: error.localizedDescription)
+            }
+        }
+    }
+
+    private func presentErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
     }
 }
 

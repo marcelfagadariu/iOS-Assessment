@@ -25,6 +25,7 @@ final class ArtListViewModel {
         }
     }
     var onLoadingStateChanged: ((Bool) -> Void)?
+    var onErrorOccurred: ((InterfaceError) -> Void)?
 
     // MARK: - Private
 
@@ -48,7 +49,7 @@ final class ArtListViewModel {
             } catch {
                 isLoading = false
                 print("An error occurred: \(error.localizedDescription)")
-                throw InterfaceError.unknown(message: error.localizedDescription)
+                onErrorOccurred?(InterfaceError.unknown(message: error.localizedDescription))
             }
         }
     }

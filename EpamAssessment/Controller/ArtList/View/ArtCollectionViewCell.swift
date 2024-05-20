@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class ArtCollectionViewCell: UICollectionViewCell {
+final class ArtCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Properties
 
