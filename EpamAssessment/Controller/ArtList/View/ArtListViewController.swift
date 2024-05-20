@@ -149,7 +149,8 @@ extension ArtListViewController: UICollectionViewDelegateFlowLayout {
 
 extension ArtListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = ArtDetailViewController(art: viewModel.art[indexPath.row])
+        let viewModel = ArtDetailViewModel(art: viewModel.art[indexPath.row])
+        let detailVC = ArtDetailViewController(viewModel: viewModel)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
