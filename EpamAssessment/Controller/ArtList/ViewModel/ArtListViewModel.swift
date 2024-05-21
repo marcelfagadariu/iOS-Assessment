@@ -19,7 +19,7 @@ final class ArtListViewModel {
     }
     var onDataLoaded: (() -> Void)?
     var pageSize = 10
-    var isLoading: Bool = true {
+    var isLoading: Bool = false {
         didSet {
             onLoadingStateChanged?(isLoading)
         }
@@ -40,16 +40,18 @@ final class ArtListViewModel {
     // MARK: - Request methods
 
     func loadData(with culture: Culture, pageSize: Int) {
+        guard !isLoading else { return }
         isLoading = true
-        Task {
+        Task { [weak self] in
+            guard let self = self else { return }
             do {
                 let artData = try await service.retrieveArt(pageSize: pageSize, culture: culture)
-                self.art = artData.artObjects
-                isLoading = false
+                self.art.append(contentsOf: artData.artObjects)
+                self.isLoading = false
             } catch {
-                isLoading = false
+                self.isLoading = false
                 print("An error occurred: \(error.localizedDescription)")
-                onErrorOccurred?(InterfaceError.unknown(message: error.localizedDescription))
+                self.onErrorOccurred?(InterfaceError.unknown(message: error.localizedDescription))
             }
         }
     }

@@ -39,35 +39,66 @@ final class ArtCollectionViewCell: UICollectionViewCell {
     // MARK: - Methods
 
     private func setupViews() {
-        self.backgroundColor = .clear
+        backgroundColor = .clear
+        setupContainerView()
+        setupTitleLabel()
+        setupDescriptionLabel()
+        setupImageView()
+        setupConstraints()
+    }
 
-        // Setup containerView
-        containerView.frame = CGRect(x: 10, y: 10, width: self.contentView.frame.width - 20, height: self.contentView.frame.height - 20)
+    private func setupContainerView() {
         containerView.backgroundColor = .clear
         containerView.layer.borderWidth = 1.0
         containerView.layer.borderColor = UIColor.secondaryLabel.cgColor
         containerView.layer.cornerRadius = 8
-        self.contentView.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(containerView)
+    }
 
-        // Setup titleLabel
-        titleLabel.frame = CGRect(x: 10, y: 10, width: containerView.frame.width - 20, height: 30)
+    private func setupTitleLabel() {
         titleLabel.textAlignment = .left
         titleLabel.font = .boldSystemFont(ofSize: 15)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(titleLabel)
+    }
 
-        // Setup descriptionLabel
-        descriptionLabel.frame = CGRect(x: 10, y: titleLabel.frame.maxY + 5, width: containerView.frame.width - 20, height: 30)
+    private func setupDescriptionLabel() {
         descriptionLabel.textAlignment = .left
         descriptionLabel.font = .preferredFont(forTextStyle: .footnote)
         descriptionLabel.numberOfLines = 2
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(descriptionLabel)
+    }
 
-        // Setup imageView
-        imageView.frame = CGRect(x: 10, y: descriptionLabel.frame.maxY + 5, width: containerView.frame.width - 20, height: containerView.frame.height - descriptionLabel.frame.maxY - 15)
+    private func setupImageView() {
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 10
         imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(imageView)
+    }
+
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+
+            imageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 5),
+            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
+        ])
     }
 
     // MARK: - Methods
@@ -79,10 +110,20 @@ final class ArtCollectionViewCell: UICollectionViewCell {
 
         if art.hasImage {
             let url = URL(string: art.webImage.url)
-            imageView.kf.setImage(with: url)
+            imageView.kf.setImage(
+                with: url,
+                options: [.memoryCacheExpiration(.expired), .diskCacheExpiration(.expired)]
+            ) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let value):
+                    self.imageView.image = value.image
+                case .failure(let error):
+                    print(error)
+                }
+            }
         } else {
             imageView.image = UIImage(named: "placeholder")
         }
     }
-
 }

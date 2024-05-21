@@ -13,22 +13,24 @@ final class ArtListViewController: UIViewController {
 
     let viewModel: ArtListViewModel
     private var collectionView: UICollectionView!
-    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    let activityIndicator = UIActivityIndicatorView(frame: UIScreen.main.bounds)
 
     // MARK: - View did Load
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
+        /// setup
         setupCollectionView()
-        viewModel.loadData(with: viewModel.culture, pageSize: viewModel.pageSize)
         setupNavigation()
+        setupActivityIndicator()
 
         /// callbacks
-        reloadCollectionView()
-        setupActivityIndicator()
         setupViewModelCallback()
-        handleErrorCallback()
+
+        /// Request
+        viewModel.loadData(with: viewModel.culture, pageSize: viewModel.pageSize)
     }
 
     // MARK: - Init
@@ -37,7 +39,11 @@ final class ArtListViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
+    deinit {
+        print("\(#file) has been deinitalized")
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -71,16 +77,9 @@ final class ArtListViewController: UIViewController {
         ])
     }
 
-    private func reloadCollectionView() {
-        viewModel.onDataLoaded = {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-
     private func handleCultureChange(_ culture: Culture) {
         viewModel.pageSize = 10
+        viewModel.art.removeAll()
         viewModel.culture = culture
         viewModel.loadData(with: culture, pageSize: viewModel.pageSize)
     }
@@ -95,6 +94,12 @@ final class ArtListViewController: UIViewController {
     }
 
     private func setupViewModelCallback() {
+        viewModel.onDataLoaded = { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
+
         viewModel.onLoadingStateChanged = { [weak self] isLoading in
             DispatchQueue.main.async {
                 if isLoading {
@@ -104,9 +109,7 @@ final class ArtListViewController: UIViewController {
                 }
             }
         }
-    }
 
-    private func handleErrorCallback() {
         viewModel.onErrorOccurred = { [weak self] error in
             DispatchQueue.main.async {
                 self?.presentErrorAlert(message: error.localizedDescription)
@@ -186,4 +189,3 @@ extension ArtListViewController: UIScrollViewDelegate {
         }
     }
 }
-

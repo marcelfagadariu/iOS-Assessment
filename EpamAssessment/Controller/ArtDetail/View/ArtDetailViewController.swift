@@ -21,6 +21,10 @@ final class ArtDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    deinit {
+        print("\(#file) has been deinitalized")
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
